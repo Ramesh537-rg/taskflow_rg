@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TaskFlow </title>
+
+    <link rel="stylesheet" href="to.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="topbar">
+
+        <div class="logo">
+            <span>✓</span>
+            TaskFlow
+        </div>
+
+        <button id="themeBtn" onclick="toggleTheme()">
+            🌙 Dark Mode
+        </button>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="container">
+
+        <!-- Welcome -->
+
+        <section class="welcome">
+
+            <div>
+                <h1>Welcome👋</h1>
+
+                <p>
+                    Organize your tasks and make your day productive.
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- ================= DASHBOARD ================= -->
+
+        <section class="dashboard">
+
+            <div class="stat-card">
+
+                <div class="stat-icon">📋</div>
+
+                <div>
+                    <h3 id="totalTasks">0</h3>
+                    <p>Total Tasks</p>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">⏳</div>
+
+                <div>
+                    <h3 id="pendingTasks">0</h3>
+                    <p>Pending</p>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">✅</div>
+
+                <div>
+                    <h3 id="completedTasks">0</h3>
+                    <p>Completed</p>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">🎯</div>
+
+                <div>
+                    <h3 id="progressPercent">0%</h3>
+                    <p>Progress</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= PROGRESS ================= -->
+
+        <section class="progress-section">
+
+            <div class="progress-header">
+
+                <span>Today's Progress</span>
+
+                <span id="progressText">0 / 0 tasks</span>
+
+            </div>
+
+            <div class="progress-bar">
+
+                <div id="progressFill"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= ADD TASK ================= -->
+
+        <section class="add-section">
+
+            <div class="input-wrapper">
+
+                <input
+                    type="text"
+                    id="taskInput"
+                    placeholder="What needs to be done?"
+                >
+
+            </div>
+
+
+            <select id="priorityInput">
+
+                <option value="low">Low Priority</option>
+
+                <option value="medium" selected>
+                    Medium Priority
+                </option>
+
+                <option value="high">
+                    High Priority
+                </option>
+
+            </select>
+
+
+            <input
+                type="date"
+                id="dateInput"
+            >
+
+
+            <button
+                class="add-btn"
+                onclick="addTask()">
+
+                + Add Task
+
+            </button>
+
+        </section>
+
+
+        <!-- ================= SEARCH ================= -->
+
+        <section class="tools">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="🔍 Search tasks..."
+                oninput="displayTasks()"
+            >
+
+
+            <div class="filters">
+
+                <button
+                    class="filter active"
+                    onclick="filterTasks('all', this)">
+                    All
+                </button>
+
+                <button
+                    class="filter"
+                    onclick="filterTasks('pending', this)">
+                    Pending
+                </button>
+
+                <button
+                    class="filter"
+                    onclick="filterTasks('completed', this)">
+                    Completed
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= TASK LIST ================= -->
+
+        <section>
+
+            <div class="list-header">
+
+                <h2>My Tasks</h2>
+
+                <button
+                    class="clear-btn"
+                    onclick="clearCompleted()">
+
+                    Clear Completed
+
+                </button>
+
+            </div>
+
+
+            <div id="taskList"></div>
+
+
+            <div
+                id="emptyMessage"
+                class="empty">
+
+                <div class="empty-icon">
+                    ✓
+                </div>
+
+                <h2>No tasks found</h2>
+
+                <p>
+                    Add a task and start being productive.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= EDIT MODAL ================= -->
+
+    <div
+        id="editModal"
+        class="modal">
+
+        <div class="modal-box">
+
+            <h2>Edit Task</h2>
+
+            <input
+                type="text"
+                id="editInput"
+                placeholder="Task name"
+            >
+
+
+            <div class="modal-buttons">
+
+                <button
+                    class="cancel-btn"
+                    onclick="closeModal()">
+
+                    Cancel
+
+                </button>
+
+
+                <button
+                    class="save-btn"
+                    onclick="saveEdit()">
+
+                    Save Changes
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="to.js"></script>
+
+</body>
+
+</html>
